@@ -3,14 +3,14 @@ import { User } from '../../../../Domain/entities/User';
 import { LocalStorage } from '../../local/LocalStorage';
 
 const ApiDelivery = axios.create({
-    baseURL: 'http://192.168.217.224:3000/api',
+    baseURL: 'http://192.168.0.157:3000/api',
     headers: {
         'Content-type': 'application/json'
     }
 })
 
 const ApiDeliveryForImage = axios.create({
-    baseURL: 'http://192.168.217.224:3000/api',
+    baseURL: 'http://192.168.0.157:3000/api',
     headers: {
         'Content-type': 'multipart/form-data',
         'accept': 'application/json',
@@ -31,7 +31,7 @@ ApiDelivery.interceptors.request.use(
 
 ApiDeliveryForImage.interceptors.request.use(
     async(config) => {
-        const data = await LocalStorage().getItem('user');
+        const data = await LocalStorage().getItem('user');  
         if (data) {
             const user: User = JSON.parse(data as any);
             config.headers!['Authorization'] = user?.session_token!

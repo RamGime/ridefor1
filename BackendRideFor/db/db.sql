@@ -143,20 +143,3 @@ CREATE TABLE order_has_products(
 ALTER TABLE user_has_roles
 ADD COLUMN is_active BOOLEAN NOT NULL DEFAULT false;
 
-
-CREATE TABLE drivers (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(90) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE driver_ratings (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    driver_id INT NOT NULL,
-    user_id BIGINT NOT NULL,
-    rating INT NOT NULL,
-    comment TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (driver_id) REFERENCES drivers(id) ON DELETE CASCADE,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-);

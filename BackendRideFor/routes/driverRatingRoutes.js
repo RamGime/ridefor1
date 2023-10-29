@@ -1,10 +1,19 @@
-    const express = require('express');
-    const router = express.Router();
+// driverRatingRoutes.js
 
-    // Importa el controlador que manejará las calificaciones de conductores
-    const driverRatingController = require('../controllers/driverRatingController');
+// const express = require('express');
+// const router = express.Router();
+// const driverRatingController = require('../controllers/driverRatingController');
 
-    // Ruta para guardar la calificación de un conductor
-    router.post('/api/driver-ratings', driverRatingController.saveDriverRating);
+// // Ruta para guardar una calificación de conductor (POST /api/driver-ratings)
+// router.post('/api/driver-ratings', driverRatingController.saveDriverRating);
 
-    module.exports = router;
+// module.exports = router;
+
+const express = require('express');
+const router = express.Router();
+const driverRatingController = require('../controllers/driverRatingController');
+
+// Ruta para guardar una calificación de conductor (POST /api/driver-ratings)
+router.post('/driver-ratings', driverRatingController.saveDriverRating);
+
+module.exports = router;
